@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.ListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="ListWindow" Height="450" Width="800">
+
+
+    <Border Margin="10 10 10 10">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="BtnSave" Content="Save to File" Click="BtnSave_Click"/>
+            </StackPanel>
+            <ListView x:Name="LVFiles" ItemsSource="{Binding}" Margin="0 10 0 0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Favourite">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Favourite}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Size" DisplayMemberBinding="{Binding Size}"/>
+                        <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Border>
+</Window>

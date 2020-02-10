@@ -1,0 +1,87 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="WpfApp1.MainWindow"
+        mc:Ignorable="d"
+    
+        FontSize="14"  FontFamily="Gadugi"
+        Title="Ferris Directory Scanner v2"
+    Height="430" Width="800">
+
+    <Border Margin="10">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Welcome to Ferris Directory Scanner" Grid.Column="0" FontSize="18" FontWeight="Bold"/>
+                <Button x:Name="BtnOpenScan" Content="Open Scan" Grid.Column="1" Margin="20 0 0 0 " Click="BtnOpenScan_Click"/>
+            </Grid>
+            <!--#region  ListView and TreeView-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--#region ListView Folders-->
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Folders" FontSize="16" FontWeight="Bold" Margin="0 10 0 0" />
+                    <ListBox x:Name="LVFolders" 
+                             Height="250" 
+                             AllowDrop="True"
+                             SelectionMode="Multiple" 
+                             Drop="LVFolders_Drop" 
+                             KeyDown="LVFolders_KeyDown"
+                             MouseDoubleClick="LVFolders_MouseDoubleClick">
+                        C:\Users\Ferris\Downloadss
+                    </ListBox>
+                </StackPanel>
+                <!--#endregion-->
+                
+                <!-- #region TreeView Extensions-->
+                <StackPanel Grid.Column="1" Margin="10 0 0 0">
+                    <TextBlock Text="Extensions" FontSize="16" FontWeight="Bold" Margin=" 0 10 0 0" />
+                    <TreeView x:Name="TVExtensions" Height="250">
+
+                        <TextBox x:Name="TbExtensionAdd" Text="Add your own here" MinWidth="48" KeyDown="TbExtensionAdd_KeyDown"></TextBox>
+                        <TreeViewItem Header="All" IsExpanded="True">
+                            <CheckBox Content="*" IsChecked="True"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Video" IsExpanded="True">
+                            <CheckBox Content="mp4"/>
+                            <CheckBox Content="avi"/>
+                            <CheckBox Content="ts" />
+                            <CheckBox Content="mkv"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Audio">
+                            <CheckBox Content="mp3"/>
+                            <CheckBox Content="oog"/>
+                            <CheckBox Content="flac"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Document">
+                            <CheckBox Content="pdf"/>
+                            <CheckBox Content="docx"/>
+                        </TreeViewItem>
+
+                    </TreeView>
+                </StackPanel>
+                <!--#endregion-->
+                
+            </Grid>
+            <!--#endregion-->
+            
+            <StackPanel Grid.Column="2" Margin="0 10 0 0">
+                <ProgressBar x:Name="PBScan" IsIndeterminate="True" Height="5" Visibility="Hidden" />
+                <Button x:Name="BtnStart" Content="Start" FontSize="20" Margin="0 10 0 0" Click="BtnStart_Click"/>
+                
+            </StackPanel>
+
+        </StackPanel>
+    </Border>
+
+</Window>
